@@ -53,6 +53,11 @@ def main():
         print_row(row)
 
         payout = get_payout(row, bet)
+        if payout > 0:
+            print(f"Congratulations, you won ₱{payout}!")
+        else:
+            print("Better luck next time!")
+        balance += payout
 
 if __name__ == '__main__':
     main()
