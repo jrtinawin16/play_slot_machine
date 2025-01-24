@@ -3,8 +3,8 @@ def spin_row():
     symbols = ["🍒", "🍉", "🍋", "🍀", "🍓", "🔔", "⭐"]
     return [random.choice(symbols) for _ in range(3)]
 
-def print_row():
-    pass
+def print_row(row):
+    print(" | ".join(row))
 
 def get_payout():
     pass
@@ -34,7 +34,10 @@ def main():
         balance -= bet
 
         row = spin_row()
-        print(row)
+        print("Spinning...\n")
+        print_row(row)
+
+        payout = get_payout(row, bet)
 
 if __name__ == '__main__':
     main()
