@@ -58,6 +58,11 @@ def main():
         else:
             print("Better luck next time!")
         balance += payout
-
+        ask_play_again = input('Do you want to spin again? (y/n): ').lower()
+        if ask_play_again != "y":
+            break
+    print("-------------------------------------------")
+    print(f"Game over! Your final balance is ₱{balance}")
+    print("-------------------------------------------")
 if __name__ == '__main__':
     main()
