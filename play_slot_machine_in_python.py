@@ -9,6 +9,10 @@ def get_payout():
 
 def main():
     balance = 100
-
+    
+    print("*******************************")
+    print("Welcome to Reydo's Lucky Slots!")
+    print("    🍒 🍉 🍋 🍀 🍓 🔔 ⭐    ")
+    print("*******************************")
 if __name__ == '__main__':
     main()
