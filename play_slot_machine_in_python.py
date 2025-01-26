@@ -1,4 +1,6 @@
 import random
+import colorama
+colorama.init()
 def spin_row():
     symbols = ["🍒", "🍉", "🍋", "🍀", "🍓", "🔔", "⭐"]
     return [random.choice(symbols) for _ in range(3)]
@@ -33,10 +35,11 @@ def main():
     print("*******************************")
 
     while balance > 0: 
-        print(f"Current balance: ₱{balance}")
+        print(colorama.Fore.WHITE + f"Current balance: ₱{balance}")
         bet = input("Place your bet amount: ₱")
+        print (colorama.Fore.WHITE + (bet))
         if not bet.isdigit():
-            print("Invalid amount, please try again.")
+            print(colorama.Fore.LIGHTRED_EX + "Invalid amount, please try again.")
             continue
 
         bet = int(bet)
@@ -54,15 +57,17 @@ def main():
 
         payout = get_payout(row, bet)
         if payout > 0:
-            print(f"Congratulations, you won ₱{payout}!")
+            print(colorama.Fore.GREEN + f"Congratulations, you won ₱{payout}!") # added colorama to color winning message
         else:
-            print("Better luck next time!")
+            print(colorama.Fore.RED + "Better luck next time!") # added colorama to losing message
         balance += payout
+        
         ask_play_again = input('Do you want to spin again? (y/n): ').lower()
+       
         if ask_play_again != "y":
             break
-    print("-------------------------------------------")
-    print(f"Game over! Your final balance is ₱{balance}")
-    print("-------------------------------------------")
+    print(colorama.Fore.WHITE + "-------------------------------------------")
+    print(colorama.Fore.WHITE + f"Game over! Your final balance is ₱{balance}")
+    print(colorama.Fore.WHITE + "-------------------------------------------")
 if __name__ == '__main__':
     main()
