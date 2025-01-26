@@ -35,6 +35,12 @@ def update_leaderboard(player_name, final_balance):
     leaderboard.sort(key=lambda x: x[1], reverse= True) # Sorts the balance, highest first
     leaderboard = leaderboard[:5] # Keeps top 5 players
 
+    # Writes the leaderboard to a file
+    with open("slot_machine_leaderboard.txt", "w") as file:
+        file.write("🏆 Leaderboard \n")
+        for idx, (name, score) in enumerate(leaderboard, 1):
+            file.write(f"{idx}. {name}: ₱{score}\n")
+
 def display_leaderboard():
     print(colorama.Fore.LIGHTCYAN_EX + "\n🏆 Leaderboard 🏆")
     for idx, (name, score) in enumerate(leaderboard, 1):
@@ -123,6 +129,6 @@ def main():
     print(colorama.Fore.WHITE + "-------------------------------------------")
 
     display_leaderboard()
-    
+
 if __name__ == '__main__':
     main()
