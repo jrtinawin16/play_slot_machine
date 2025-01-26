@@ -60,19 +60,24 @@ def main():
             if balance < bet:
                 print(colorama.Fore.RED + "Insufficient balance to continue spin")
                 break
-            print(f"\n{colorama.Fore.LIGHTYELLOW_EX}Spin # {spin + 1}/{num_spins}...")
-        row = spin_row()
-        print("Spinning...\n")
-        print_row(row)
+            print(f"\n{colorama.Fore.LIGHTYELLOW_EX}Spin #{spin + 1}/{num_spins}...")
+            balance -= bet
+            row = spin_row()
+            print("Spinning...\n")
+            print_row(row)
 
-        payout = get_payout(row, bet)
-        if payout > 0:
-            print(colorama.Fore.GREEN + f"Congratulations, you won ₱{payout}!") # added colorama to color winning message
-        else:
-            print(colorama.Fore.RED + "Better luck next time!") # added colorama to losing message
-        balance += payout
+            payout = get_payout(row, bet)
+            if payout > 0:
+                print(colorama.Fore.GREEN + f"Congratulations, you won ₱{payout}!") # added colorama to color winning message
+            else:
+                print(colorama.Fore.RED + "Better luck next time!") # added colorama to losing message
+            balance += payout
+
+            if balance <= 0:
+                print(colorama.Fore.RED + "You spent all your money during multiple spins.")
+                break
         
-        ask_play_again = input('Do you want to spin again? (y/n): ').lower()
+        ask_play_again = input(colorama.Fore.WHITE + 'Do you want to spin again? (y/n): ').lower()
        
         if ask_play_again != "y":
             break
