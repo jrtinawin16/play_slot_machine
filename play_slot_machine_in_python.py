@@ -73,6 +73,7 @@ def main():
         if bet < min_bet or bet > max_bet:
             print(f"Bet must be between ₱{min_bet} and ₱{max_bet}.")
             continue
+
         # Asks user how many spins to play
         num_spins = input(colorama.Fore.WHITE + "How many spins would you like to play? " + colorama.Style.RESET_ALL)
         if not num_spins.isdigit():
@@ -96,6 +97,15 @@ def main():
             else:
                 print(colorama.Fore.RED + "Better luck next time!") # added colorama to losing message
             balance += payout
+
+            # Bonus Round
+            if random.randint(1,10) == 1:
+                print(colorama.Fore.MAGENTA + "🎁 BONUS ROUND! Choose a box: A, B, or C")
+                choice = input ("Your choice: ").upper()
+                rewards = {"A": 200, "B": 500, "C": 1000}
+                bonus = rewards.get(choice,0)
+                print(colorama.Fore.LIGHTMAGENTA_EX + f"You won ₱{bonus} in the bonus round!")
+                balance += bonus
 
             if balance <= 0:
                 print(colorama.Fore.RED + "You spent all your money during multiple spins.")
