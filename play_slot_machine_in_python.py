@@ -34,7 +34,7 @@ def update_leaderboard(player_name, final_balance):
     leaderboard.append((player_name, final_balance))
     leaderboard.sort(key=lambda x: x[1], reverse= True) # Sorts the balance, highest first
     leaderboard = leaderboard[:5] # Keeps top 5 players
-    
+
 def display_leaderboard():
     print(colorama.Fore.LIGHTCYAN_EX + "\n🏆 Leaderboard 🏆")
     for idx, (name, score) in enumerate(leaderboard, 1):
@@ -50,8 +50,13 @@ def main():
     print("*******************************")
     print("Welcome to Reydo's Lucky Slots!")
     print("    🍒 🍉 🍋 🍀 🍓 🔔 ⭐    ")
-    print(f"Bet range: ₱{min_bet} up to ₱{max_bet}")
     print("*******************************")
+    print(colorama.Fore.LIGHTCYAN_EX + "Legend:")
+    print(colorama.Fore.RED + "🍒🍒🍒: -100, " + colorama.Fore.GREEN + "🍉🍉🍉: +100, " + colorama.Fore.YELLOW + "🍋🍋🍋: 2x Bet")
+    print(colorama.Fore.MAGENTA + "🍓🍓🍓: 3x Bet, " + colorama.Fore.GREEN + "🍀🍀🍀: 5x Bet, " +
+        colorama.Fore.LIGHTYELLOW_EX + "🔔🔔🔔: 10x Bet, " + colorama.Fore.CYAN + "⭐⭐⭐: 20x Bet") 
+    print(f"Bet range: ₱{min_bet} up to ₱{max_bet}")
+
 
     while balance > 0: 
         print(colorama.Fore.WHITE + f"Current balance: ₱{balance}")
