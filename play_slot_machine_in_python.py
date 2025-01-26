@@ -1,6 +1,10 @@
 import random
 import colorama
 colorama.init()
+
+# Leaderboard system
+leaderboard = []
+
 def spin_row():
     symbols = ["🍒", "🍉", "🍋", "🍀", "🍓", "🔔", "⭐"]
     return [random.choice(symbols) for _ in range(3)]
@@ -25,12 +29,18 @@ def get_payout(row, bet):
         elif row[0] == "⭐":
             return bet * 20
     return 0
+def display_leaderboard():
+    print(colorama.Fore.LIGHTCYAN_EX + "\n🏆 Leaderboard 🏆")
+    for idx, (name, score) in enumerate(leaderboard, 1):
+        print(f"{idx}. {name}: ₱{score}")
 
 def main():
     balance = 1000
     min_bet = 20 # Added minimum and maximum bet
     max_bet = 500
     
+    # Get player name for leaderboards
+    player_name = input("Please enter your name: ")
     print("*******************************")
     print("Welcome to Reydo's Lucky Slots!")
     print("    🍒 🍉 🍋 🍀 🍓 🔔 ⭐    ")
