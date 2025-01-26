@@ -49,8 +49,18 @@ def main():
         if bet <= 0:
             print("Bet must be greater than 0.")
             continue
-        balance -= bet
-
+        # Asks user how many spins to play
+        num_spins = input(colorama.Fore.WHITE + "How many spins would you like to play? " + colorama.Style.RESET_ALL)
+        if not num_spins.isdigit():
+            num_spins = 1
+        else:
+            num_spins = int(num_spins)
+        # Loop if user wants multiple spins
+        for spin in range(num_spins):
+            if balance < bet:
+                print(colorama.Fore.RED + "Insufficient balance to continue spin")
+                break
+            print(f"\n{colorama.Fore.LIGHTYELLOW_EX}Spin # {spin + 1}/{num_spins}...")
         row = spin_row()
         print("Spinning...\n")
         print_row(row)
