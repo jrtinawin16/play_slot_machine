@@ -29,6 +29,12 @@ def get_payout(row, bet):
         elif row[0] == "⭐":
             return bet * 20
     return 0
+def update_leaderboard(player_name, final_balance):
+    global leaderboard
+    leaderboard.append((player_name, final_balance))
+    leaderboard.sort(key=lambda x: x[1], reverse= True) # Sorts the balance, highest first
+    leaderboard = leaderboard[:5] # Keeps top 5 players
+    
 def display_leaderboard():
     print(colorama.Fore.LIGHTCYAN_EX + "\n🏆 Leaderboard 🏆")
     for idx, (name, score) in enumerate(leaderboard, 1):
@@ -94,6 +100,8 @@ def main():
        
         if ask_play_again != "y":
             break
+    update_leaderboard(player_name, balance)
+
     print(colorama.Fore.WHITE + "-------------------------------------------")
     print(colorama.Fore.WHITE + f"Game over! Your final balance is ₱{balance}")
     print(colorama.Fore.WHITE + "-------------------------------------------")
