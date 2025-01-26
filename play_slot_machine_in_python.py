@@ -36,8 +36,8 @@ def update_leaderboard(player_name, final_balance):
     leaderboard = leaderboard[:5] # Keeps top 5 players
 
     # Writes the leaderboard to a file
-    with open("slot_machine_leaderboard.txt", "w") as file:
-        file.write("🏆 Leaderboard \n")
+    with open("slot_machine_leaderboard.txt", "w", encoding="utf-8") as file:
+        file.write("🏆Leaderboard🏆\n")
         for idx, (name, score) in enumerate(leaderboard, 1):
             file.write(f"{idx}. {name}: ₱{score}\n")
 
