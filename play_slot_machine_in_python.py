@@ -115,10 +115,14 @@ def main():
        
         if ask_play_again != "y":
             break
+
     update_leaderboard(player_name, balance)
 
     print(colorama.Fore.WHITE + "-------------------------------------------")
     print(colorama.Fore.WHITE + f"Game over! Your final balance is ₱{balance}")
     print(colorama.Fore.WHITE + "-------------------------------------------")
+
+    display_leaderboard()
+    
 if __name__ == '__main__':
     main()
