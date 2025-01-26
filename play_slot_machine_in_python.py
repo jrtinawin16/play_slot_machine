@@ -28,10 +28,13 @@ def get_payout(row, bet):
 
 def main():
     balance = 1000
+    min_bet = 20 # Added minimum and maximum bet
+    max_bet = 500
     
     print("*******************************")
     print("Welcome to Reydo's Lucky Slots!")
     print("    🍒 🍉 🍋 🍀 🍓 🔔 ⭐    ")
+    print(f"Bet range: ₱{min_bet} up to ₱{max_bet}")
     print("*******************************")
 
     while balance > 0: 
@@ -46,8 +49,8 @@ def main():
         if bet > balance:
             print("Insufficient money to bet.")
             continue
-        if bet <= 0:
-            print("Bet must be greater than 0.")
+        if bet < min_bet or bet > max_bet:
+            print(f"Bet must be between ₱{min_bet} and ₱{max_bet}.")
             continue
         # Asks user how many spins to play
         num_spins = input(colorama.Fore.WHITE + "How many spins would you like to play? " + colorama.Style.RESET_ALL)
